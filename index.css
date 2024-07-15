@@ -27,7 +27,6 @@
     align-items: center;
     position: absolute;
     justify-content: space-around;
-    animation-direction: normal;
 }
 .inner {
     width: 100vw;
@@ -40,12 +39,28 @@
     visibility: hidden;
 }
 
-.main-two.two {
-    left: -33.33333333333%;
+.main-two.rev-one {
+    animation-duration: 1s;
+    animation-name: rev-one;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
 }
 
-.main-two.three {
-    top: -33.33333333333%;
+@keyframes rev-one {
+    0% {
+        transform: translate3d(-33.3333333333%,0,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+.main-two.two {
+    left: -33.33333333333%;
+    animation-duration: 1s;
+    animation-name: two;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
 }
 
 @keyframes two {
@@ -57,9 +72,226 @@
     }
 }
 
+.main-two.rev-two {
+    animation-duration: 1s;
+    animation-name: rev-two;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes rev-two {
+    0% {
+        transform: translate3d(0,-33.3333333333%,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+.main-two.three {
+    top: -33.33333333333%;
+    animation-fill-mode: forwards;
+    animation-name: three;
+    animation-duration: 1s;
+}
+
+
 @keyframes three {
     0% {
         transform: translate3d(0,33.3333333333%,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+.main-two.rev-three {
+    animation-duration: 1s;
+    animation-name: rev-three;
+    animation-fill-mode: forwards;
+}
+
+@keyframes rev-three {
+    0% {
+        transform: translate3d(33.3333333333%,0,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+
+.main-two.four {
+    left: 0;
+    animation-fill-mode: forwards;
+    animation-name: four;
+    animation-duration: 1s;
+}
+
+
+@keyframes four {
+    0% {
+        transform: translate3d(-33.3333333333%,0,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+.main-two.rev-four {
+    animation-fill-mode: forwards;
+    animation-name: rev-four;
+    animation-duration: 1s;
+}
+
+
+@keyframes rev-four {
+    0% {
+        transform: translate3d(33.3333333333%,0,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+.main-two.five {
+    left: 33.3333333%;
+    animation-fill-mode: forwards;
+    animation-name: five;
+    animation-duration: 1s;
+}
+
+@keyframes  five{
+    0% {
+        transform: translate3d(-33.3333333333%,0,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+.main-two.rev-five {
+    animation-fill-mode: forwards;
+    animation-name: rev-five;
+    animation-duration: 1s;
+}
+
+
+@keyframes rev-five {
+    0% {
+        transform: translate3d(0,33.3333333333%,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+.main-two.six {
+    top: 0;
+    animation-fill-mode: forwards;
+    animation-name: six;
+    animation-duration: 1s;
+}
+
+@keyframes  six{
+    0% {
+        transform: translate3d(0,-33.3333333333%,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+.main-two.rev-six {
+    animation-fill-mode: forwards;
+    animation-name: rev-six;
+    animation-duration: 1s;
+}
+
+
+@keyframes rev-six {
+    0% {
+        transform: translate3d(0,33.3333333%,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+.main-two.seven {
+    top: 33.3333333%;
+    animation-fill-mode: forwards;
+    animation-name: six;
+    animation-duration: 1s;
+}
+
+@keyframes  seven{
+    0% {
+        transform: translate3d(0,-33.3333333333%,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+.main-two.rev-seven {
+    animation-fill-mode: forwards;
+    animation-name: rev-seven;
+    animation-duration: 1s;
+}
+
+
+@keyframes rev-seven {
+    0% {
+        transform: translate3d(-33.3333333%,0,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+.main-two.eight {
+    left: 0;
+    animation-fill-mode: forwards;
+    animation-name: eight;
+    animation-duration: 1s;
+}
+
+@keyframes  eight{
+    0% {
+        transform: translate3d(33.3333333333%,0,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+.main-two.rev-eight {
+    animation-fill-mode: forwards;
+    animation-name: rev-eight;
+    animation-duration: 1s;
+}
+
+
+@keyframes rev-eight {
+    0% {
+        transform: translate3d(-33.3333333333%,0,0);
+    }
+    100% {
+        transform: translate3d(0,0,0);
+    }
+}
+
+.main-two.nine {
+    left: -33.333333%;
+    animation-fill-mode: forwards;
+    animation-name: nine;
+    animation-duration: 1s;
+}
+
+@keyframes  nine{
+    0% {
+        transform: translate3d(33.3333333333%,0,0);
     }
     100% {
         transform: translate3d(0,0,0);
