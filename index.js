@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // previousdelatavalue = currentvalue*100;
             // deltacount = (nextscrolldeltavalue + previousdelatavalue ) / 2;
             deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
-        }, 1000);
+        }, 250);
     };
     const pauseScrolling = () => {
         isScrollingAllowed = false;
