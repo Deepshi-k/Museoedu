@@ -1,305 +1,74 @@
-* {
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-
-::-webkit-scrollbar {
-    display: none;
+body {
+    overflow: hidden;
 }
-  
-
+@keyframes zoom {
+    100% {
+        scale: 1;
+    }
+}
 .main {
     width: 100vw;
     height: 100vh;
+    overflow: scroll;
+    position: absolute;
     overflow: hidden;
-    position: fixed;
 }
-.main-container {
-    width: 300vw;
-    height: 300vh;
-    left: 50%;
-    top: 50%;
-    transform-origin: 50% 50% 0;
-    transform: translate(-50%,-50%);
-    position: absolute;
-}
-.main-two {
-    width: 300vw;
-    height: 300vh;
+.sub{
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
-    position: absolute;
-    justify-content: space-around;
+    width: 300vw;
+    height: 300vh;
+    position: relative;
+    scale: 0.3333333333;
+    /* animation: zoom 1s ease forwards; */
 }
 .inner {
     width: 100vw;
     height: 100vh;
-    background-color: aqua;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
 }
-.scroll-height {
-    height: 700vh;
-    background-color: aqua;
-    visibility: hidden;
+.inner:nth-child(1){
+    top: 100vh;
+    left: 100vw;
 }
-
-.main-two.rev-one {
-    animation-duration: 1s;
-    animation-name: rev-one;
-    animation-fill-mode: forwards;
-    animation-direction: normal;
+.inner:nth-child(2){
+    top: 100vh;
+    left: 200vw;
 }
-
-@keyframes rev-one {
-    0% {
-        transform: translate3d(-33.3333333333%,0,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
+.inner:nth-child(3){
+    top: 200vh;
+    left: 200vw;
 }
-
-.main-two.two {
-    left: -33.33333333333%;
-    animation-duration: 1s;
-    animation-name: two;
-    animation-fill-mode: forwards;
-    animation-direction: normal;
+.inner:nth-child(4){
+    top: 200vh;
+    left: 100vw;
 }
-
-@keyframes two {
-    0% {
-        transform: translate3d(33.3333333333%,0,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
+.inner:nth-child(5){
+    top: 200vh;
+    left: 0vw;
 }
-
-.main-two.rev-two {
-    animation-duration: 1s;
-    animation-name: rev-two;
-    animation-fill-mode: forwards;
+.inner:nth-child(6){
+    top: 100vh;
+    left: 0vw;
 }
-
-
-@keyframes rev-two {
-    0% {
-        transform: translate3d(0,-33.3333333333%,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
+.inner:nth-child(7){
+    top: 0vh;
+    left: 0vw;
 }
-
-.main-two.three {
-    top: -33.33333333333%;
-    animation-fill-mode: forwards;
-    animation-name: three;
-    animation-duration: 1s;
+.inner:nth-child(8){
+    top: 0vh;
+    left: 100vw;
 }
-
-
-@keyframes three {
-    0% {
-        transform: translate3d(0,33.3333333333%,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
-}
-
-.main-two.rev-three {
-    animation-duration: 1s;
-    animation-name: rev-three;
-    animation-fill-mode: forwards;
-}
-
-@keyframes rev-three {
-    0% {
-        transform: translate3d(33.3333333333%,0,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
-}
-
-
-.main-two.four {
-    left: 0;
-    animation-fill-mode: forwards;
-    animation-name: four;
-    animation-duration: 1s;
-}
-
-
-@keyframes four {
-    0% {
-        transform: translate3d(-33.3333333333%,0,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
-}
-
-.main-two.rev-four {
-    animation-fill-mode: forwards;
-    animation-name: rev-four;
-    animation-duration: 1s;
-}
-
-
-@keyframes rev-four {
-    0% {
-        transform: translate3d(33.3333333333%,0,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
-}
-
-.main-two.five {
-    left: 33.3333333%;
-    animation-fill-mode: forwards;
-    animation-name: five;
-    animation-duration: 1s;
-}
-
-@keyframes  five{
-    0% {
-        transform: translate3d(-33.3333333333%,0,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
-}
-
-.main-two.rev-five {
-    animation-fill-mode: forwards;
-    animation-name: rev-five;
-    animation-duration: 1s;
-}
-
-
-@keyframes rev-five {
-    0% {
-        transform: translate3d(0,33.3333333333%,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
-}
-
-.main-two.six {
-    top: 0;
-    animation-fill-mode: forwards;
-    animation-name: six;
-    animation-duration: 1s;
-}
-
-@keyframes  six{
-    0% {
-        transform: translate3d(0,-33.3333333333%,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
-}
-
-.main-two.rev-six {
-    animation-fill-mode: forwards;
-    animation-name: rev-six;
-    animation-duration: 1s;
-}
-
-
-@keyframes rev-six {
-    0% {
-        transform: translate3d(0,33.3333333%,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
-}
-
-.main-two.seven {
-    top: 33.3333333%;
-    animation-fill-mode: forwards;
-    animation-name: seven;
-    animation-duration: 1s;
-}
-
-@keyframes  seven{
-    0% {
-        transform: translate3d(0,-33.3333333333%,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
-}
-
-.main-two.rev-seven {
-    animation-fill-mode: forwards;
-    animation-name: rev-seven;
-    animation-duration: 1s;
-}
-
-
-@keyframes rev-seven {
-    0% {
-        transform: translate3d(-33.3333333%,0,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
-}
-
-.main-two.eight {
-    left: 0;
-    animation-fill-mode: forwards;
-    animation-name: eight;
-    animation-duration: 1s;
-}
-
-@keyframes  eight{
-    0% {
-        transform: translate3d(33.3333333333%,0,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
-}
-
-.main-two.rev-eight {
-    animation-fill-mode: forwards;
-    animation-name: rev-eight;
-    animation-duration: 1s;
-}
-
-
-@keyframes rev-eight {
-    0% {
-        transform: translate3d(-33.3333333333%,0,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
-}
-
-.main-two.nine {
-    left: -33.333333%;
-    animation-fill-mode: forwards;
-    animation-name: nine;
-    animation-duration: 1s;
-}
-
-@keyframes  nine{
-    0% {
-        transform: translate3d(33.3333333333%,0,0);
-    }
-    100% {
-        transform: translate3d(0,0,0);
-    }
+.inner:nth-child(9){
+    top: 0vh;
+    left: 200vw;
 }

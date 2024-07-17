@@ -1,54 +1,78 @@
-window.addEventListener("DOMContentLoaded",()=>{
-    window.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth' // Optional: 'auto' or 'smooth'
-    });
-});
 
-let height=(window.innerHeight*6)/9;
-let change_top_height = 0;
-let change_bottom_height = height;
-let slide_name_forward = ["one","two","three","four","five","six","seven","eight","nine"];
-let slide_name_backward = ["rev-one","rev-two","rev-three","rev-four","rev-five","rev-six","rev-seven","rev-eight","rev-nine"];
-let position = 0;
-window.addEventListener('scroll', function(e) {
-    if(this.window.scrollY > change_bottom_height){
-        if(position == 8){
-            return;
+document.addEventListener('DOMContentLoaded', () => {
+    const videos = document.querySelectorAll('.inner');
+    let currentIndex = 0;
+    let isScrollingAllowed = true;
+    let scrollTimeout = null;
+    let nextscrolldeltavalue = 300;
+    let previousdelatavalue = 0;
+    let scrollDirection = true;
+    let deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
+    document.querySelectorAll(".inner")[0].scrollIntoView({behavior : 'smooth' , block : 'center' ,inline :'center'});
+    setTimeout(()=>{
+        document.querySelector(".sub").style.animation = "zoom 3s ease forwards";
+    },2000);
+    const scrollToVideo = (index) => {
+        if (index >= 0 && index < videos.length) {
+            videos[index].scrollIntoView({ behavior: 'smooth' });
         }
-        this.document.querySelector("body").style.overflowY ="hidden";
-        position++;
-        document.querySelector(".main-two").classList.add(slide_name_forward[position]);
-        remove_reverse_name();
-        document.querySelector(".main-two").addEventListener("animationend",()=>{
-            this.document.querySelector("body").style.overflowY ="scroll";
-        });
-        change_top_height+=height;
-        change_bottom_height+=height;
-        console.log(change_bottom_height+"    "+change_top_height+"     "+position);
-    }
-    if(this.window.scrollY < change_top_height){
-        if(position < 0){
-            return;
+    };
+
+    const handleWheel = (event) => {
+        if (isScrollingAllowed) {
+            if (event.deltaY > 0) {
+                currentIndex = Math.min(currentIndex + 1, videos.length - 1);
+                scrollToVideo(currentIndex);
+                pauseScrolling();
+            } else if (event.deltaY < 0) {
+                currentIndex = Math.max(currentIndex - 1, 0);
+                scrollToVideo(currentIndex);
+                pauseScrolling();
+            }
         }
-        this.document.querySelector("body").style.overflowY ="hidden";
-        document.querySelector(".main-two").classList.remove(slide_name_forward[position]);
-        remove_reverse_name();
-        position--;
-        document.querySelector(".main-two").classList.add(slide_name_backward[position]);
-        document.querySelector(".main-two").addEventListener("animationend",()=>{
-            this.document.querySelector("body").style.overflowY ="scroll";
-        });
-        change_top_height-=height;
-        change_bottom_height-=height;
-        console.log(change_bottom_height+"    "+change_top_height+"     "+position);
-    }
-
+        else {
+            if (event.deltaY > 0) {
+                if(scrollDirection){
+                    scrollDirection = false;
+                    deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
+                }
+                if(deltacount==nextscrolldeltavalue) {
+                    // nextscrolldeltavalue+=100;
+                    // previousdelatavalue+=100;
+                    deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
+                    isScrollingAllowed = true;
+                }
+                deltacount=(currentIndex == 8) ? deltacount=150  : deltacount+1; 
+            } 
+            else if (event.deltaY < 0) {
+                if(!scrollDirection){
+                    scrollDirection = true;
+                    deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
+                }
+                if(deltacount==previousdelatavalue) {
+                    // nextscrolldeltavalue-=100;
+                    // previousdelatavalue-=100;
+                    deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
+                    isScrollingAllowed = true;
+                }
+                deltacount=(currentIndex == 0) ? deltacount=150  : deltacount-1; 
+            }
+        }
+        if (scrollTimeout) {
+            event.stopPropagation();
+            clearTimeout(scrollTimeout);
+        }
+        scrollTimeout = setTimeout(() => {
+            isScrollingAllowed = true;
+            // let currentvalue=currentIndex;
+            // nextscrolldeltavalue = ((currentvalue+1)*100)+300; 
+            // previousdelatavalue = currentvalue*100;
+            // deltacount = (nextscrolldeltavalue + previousdelatavalue ) / 2;
+            deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
+        }, 1000);
+    };
+    const pauseScrolling = () => {
+        isScrollingAllowed = false;
+    };
+document.addEventListener('wheel', handleWheel,{passive : false});
 });
-
-function remove_reverse_name(){
-    slide_name_backward.forEach((element) => {
-        document.querySelector(".main-two").classList.remove(element);
-    });
-}
