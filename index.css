@@ -1,16 +1,19 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
 body {
     overflow: hidden;
 }
+
 @keyframes zoom {
     100% {
         scale: 1;
     }
 }
+
 .main {
     width: 100vw;
     height: 100vh;
@@ -18,7 +21,8 @@ body {
     position: absolute;
     overflow: hidden;
 }
-.sub{
+
+.sub {
     display: flex;
     flex-wrap: wrap;
     width: 300vw;
@@ -27,6 +31,7 @@ body {
     scale: 0.3333333333;
     /* animation: zoom 1s ease forwards; */
 }
+
 .inner {
     width: 100vw;
     height: 100vh;
@@ -36,39 +41,48 @@ body {
     align-items: center;
     font-size: 100px;
 }
-.inner:nth-child(1){
+
+.inner:nth-child(1) {
     top: 100vh;
     left: 100vw;
 }
-.inner:nth-child(2){
+
+.inner:nth-child(2) {
     top: 100vh;
     left: 200vw;
 }
-.inner:nth-child(3){
+
+.inner:nth-child(3) {
     top: 200vh;
     left: 200vw;
 }
-.inner:nth-child(4){
+
+.inner:nth-child(4) {
     top: 200vh;
     left: 100vw;
 }
-.inner:nth-child(5){
+
+.inner:nth-child(5) {
     top: 200vh;
     left: 0vw;
 }
-.inner:nth-child(6){
+
+.inner:nth-child(6) {
     top: 100vh;
     left: 0vw;
 }
-.inner:nth-child(7){
+
+.inner:nth-child(7) {
     top: 0vh;
     left: 0vw;
 }
-.inner:nth-child(8){
+
+.inner:nth-child(8) {
     top: 0vh;
     left: 100vw;
 }
-.inner:nth-child(9){
+
+.inner:nth-child(9) {
     top: 0vh;
     left: 200vw;
 }
@@ -80,7 +94,7 @@ body {
     position: absolute;
     top: 7px;
     left: 7px;
-    background-image: url("Imagess/pointer.svg");
+    background-image: url("Images/pointer.svg");
     background-repeat: no-repeat;
     background-size: contain;
     z-index: 4;
