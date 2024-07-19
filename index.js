@@ -3,9 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll(".inner")[0].scrollIntoView({behavior : 'smooth' , block : 'center' ,inline :'center'});
     setTimeout(()=>{
         document.querySelector(".sub").style.animation = "zoom 3s ease forwards";
+        document.addEventListener('wheel', handleWheel,{passive : false});
     },2000);
 });
-const videos = document.querySelectorAll('.inner');
+const inner = document.querySelectorAll('.inner');
 let currentIndex = 0;
 let isScrollingAllowed = true;
 let scrollTimeout = null;
@@ -15,22 +16,24 @@ let scrollDirection = true;
 let deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
 let pointer_postion_names = ["pointer-one","pointer-two","pointer-three","pointer-four","pointer-five","pointer-six","pointer-seven","pointer-eight","pointer-nine"];
 let pointer = document.querySelector("#pointer");
-const scrollToVideo = (index) => {
-    if (index >= 0 && index < videos.length) {
-        videos[index].scrollIntoView({ behavior: 'smooth' });
+
+function scrollToSlide(index){
+    if (index >= 0 && index < inner.length) {
+        inner[index].scrollIntoView({ behavior: 'smooth' });
         pointer.classList = pointer_postion_names[index];
+        currentIndex=index;
     }
 };
 const handleWheel = (event) => {
     if (isScrollingAllowed) {
         if (event.deltaY > 0) {
-            currentIndex = Math.min(currentIndex + 1, videos.length - 1);
-            scrollToVideo(currentIndex);
+            currentIndex = Math.min(currentIndex + 1, inner.length - 1);
+            scrollToSlide(currentIndex);
             console.log(deltacount);
             pauseScrolling();
         } else if (event.deltaY < 0) {
             currentIndex = Math.max(currentIndex - 1, 0);
-            scrollToVideo(currentIndex);
+            scrollToSlide(currentIndex);
             console.log(deltacount);
             pauseScrolling();
         }
@@ -79,4 +82,3 @@ const handleWheel = (event) => {
 const pauseScrolling = () => {
     isScrollingAllowed = false;
 };
-document.addEventListener('wheel', handleWheel,{passive : false});
