@@ -13,9 +13,12 @@ let nextscrolldeltavalue = 300;
 let previousdelatavalue = 0;
 let scrollDirection = true;
 let deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
+let pointer_postion_names = ["pointer-one","pointer-two","pointer-three","pointer-four","pointer-five","pointer-six","pointer-seven","pointer-eight","pointer-nine"];
+let pointer = document.querySelector("#pointer");
 const scrollToVideo = (index) => {
     if (index >= 0 && index < videos.length) {
         videos[index].scrollIntoView({ behavior: 'smooth' });
+        pointer.classList = pointer_postion_names[index];
     }
 };
 const handleWheel = (event) => {

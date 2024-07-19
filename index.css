@@ -88,39 +88,83 @@ body {
 }
 
 /* ---------table container----------- */
-.pointer {
-    width: 12px;
-    height: 12px;
+#pointer {
+    width: 15px;
+    height: 15px;
     position: absolute;
-    top: 7px;
-    left: 7px;
     background-image: url("Images/pointer.svg");
     background-repeat: no-repeat;
     background-size: contain;
-    z-index: 4;
+    transition: 1s ease;
+}
 
+.pointer-one {
+    top: 30px;
+    left: 30px;
+}
+
+.pointer-two {
+    top: 30px;
+    left: 55px;
+}
+
+.pointer-three {
+    top: 55px;
+    left: 55px;
+}
+
+.pointer-four {
+    top: 55px;
+    left: 30px;
+}
+
+.pointer-five {
+    top: 55px;
+    left: 5px;
+}
+
+.pointer-six {
+    top: 30px;
+    left: 5px;
+}
+
+.pointer-seven {
+    top: 5px;
+    left: 5px;
+}
+
+.pointer-eight {
+    top: 5px;
+    left: 30px;
+}
+
+.pointer-nine {
+    top: 5px;
+    left: 55px;
 }
 
 .main_table_container {
     display: flex;
     position: absolute;
+    align-items: center;
+    justify-content: center;
     z-index: 1000;
     right: 20px;
     top: 20px;
+    gap: 15px;
 }
 
 .table {
-    width: 74px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
     border: 1px solid green;
     border-radius: 14px;
-    margin-right: 14px;
     overflow: hidden;
 }
 
 td {
-    width: 40px;
-    height: 23px;
+    width: 25px;
+    height: 25px;
     /* border-radius: 14px; */
     border: none;
 }
