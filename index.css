@@ -8,10 +8,30 @@ body {
     overflow: hidden;
 }
 
-@keyframes zoom {
+@keyframes zoomin {
+    0% {
+        scale: 0.33333;
+    }
     100% {
         scale: 1;
     }
+}
+
+@keyframes zoomout {
+    0% {
+        scale: 1;
+    }
+    100% {
+        scale: 0.333333;
+    }
+}
+
+.sub.zoomin {
+    animation: zoomin 3s ease forwards;
+}
+
+.sub.zoomout {
+    animation: zoomout 3s ease forwards;
 }
 
 .main {
@@ -28,8 +48,6 @@ body {
     width: 300vw;
     height: 300vh;
     position: relative;
-    scale: 0.3333333333;
-    /* animation: zoom 1s ease forwards; */
 }
 
 .inner {

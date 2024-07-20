@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll(".inner")[0].scrollIntoView({behavior : 'smooth' , block : 'center' ,inline :'center'});
     setTimeout(()=>{
-        document.querySelector(".sub").style.animation = "zoom 3s ease forwards";
+        document.querySelector(".sub").classList.add("zoomin");
         document.addEventListener('wheel', handleWheel,{passive : false});
     },2000);
 });
@@ -16,14 +16,25 @@ let scrollDirection = true;
 let deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
 let pointer_postion_names = ["pointer-one","pointer-two","pointer-three","pointer-four","pointer-five","pointer-six","pointer-seven","pointer-eight","pointer-nine"];
 let pointer = document.querySelector("#pointer");
-
+let sub_container_zoom = false;
 function scrollToSlide(index){
+    if(sub_container_zoom){
+        document.querySelector(".sub").classList.remove("zoomout");
+        document.addEventListener('wheel', handleWheel,{passive : false});
+        sub_container_zoom = false;
+    }
     if (index >= 0 && index < inner.length) {
         inner[index].scrollIntoView({ behavior: 'smooth' });
         pointer.classList = pointer_postion_names[index];
         currentIndex=index;
+        console.log(".............");
     }
 };
+
+function scrollToSlide_reset(){
+    inner[0].scrollIntoView();
+    pointer.classList = pointer_postion_names[0];
+}
 const handleWheel = (event) => {
     if (isScrollingAllowed) {
         if (event.deltaY > 0) {
@@ -82,3 +93,13 @@ const handleWheel = (event) => {
 const pauseScrolling = () => {
     isScrollingAllowed = false;
 };
+
+document.querySelector(".zoomOut").addEventListener("click",()=>{
+    if(!sub_container_zoom) {
+        document.querySelector(".sub").classList.remove("zoomin");
+        document.querySelector(".sub").classList.add("zoomout");
+        scrollToSlide_reset(); 
+        document.removeEventListener('wheel', handleWheel,{passive : false});
+        sub_container_zoom=true;
+    }
+});
