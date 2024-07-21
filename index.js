@@ -104,35 +104,3 @@ document.querySelector(".zoomOut").addEventListener("click",()=>{
     }
 });
 
-
-let startX;
-let startY;
-
-const minSwipeDistance = 50;
-
-document.addEventListener('touchstart', touchStartHandler, false);
-
-document.addEventListener('touchend', touchEndHandler, false);
-
-function touchStartHandler(event) {
-    startX = event.touches[0].clientX;
-    startY = event.touches[0].clientY;
-}
-
-function touchEndHandler(event) {
-    const endX = event.changedTouches[0].clientX;
-    const endY = event.changedTouches[0].clientY;
-
-    const deltaX = endX - startX;
-    const deltaY = endY - startY;
-    if (Math.abs(deltaY) > minSwipeDistance) {
-        // Vertical swipe detected
-        if (deltaY > 0) {
-            currentIndex = Math.max(currentIndex - 1, 0);
-            scrollToSlide(currentIndex);
-        } else {
-            currentIndex = Math.min(currentIndex + 1, inner.length - 1);
-            scrollToSlide(currentIndex);
-        }
-    }
-}
