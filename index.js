@@ -96,6 +96,8 @@ const pauseScrolling = () => {
 
 document.querySelector(".zoomOut").addEventListener("click",()=>{
     if(!sub_container_zoom) {
+        document.querySelector(".zoomOut").classList.add("active");
+        document.querySelector(".zoomIn").classList.remove("active");
         document.querySelector(".sub").classList.remove("zoomin");
         document.querySelector(".sub").classList.add("zoomout");
         scrollToSlide_reset(); 
@@ -104,3 +106,13 @@ document.querySelector(".zoomOut").addEventListener("click",()=>{
     }
 });
 
+document.querySelector(".zoomIn").addEventListener("click",()=>{
+    if(sub_container_zoom) {
+        document.querySelector(".zoomIn").classList.add("active");
+        document.querySelector(".zoomOut").classList.remove("active");
+        document.querySelector(".sub").classList.remove("zoomout");
+        document.querySelector(".sub").classList.add("zoomin");
+        document.addEventListener('wheel', handleWheel,{passive : false});
+        sub_container_zoom=false;
+    }
+});
