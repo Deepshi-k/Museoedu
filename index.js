@@ -20,6 +20,8 @@ let sub_container_zoom = false;
 function scrollToSlide(index){
     if(sub_container_zoom){
         document.querySelector(".sub").classList.remove("zoomout");
+        document.querySelector(".zoomIn").classList.add("active");
+        document.querySelector(".zoomOut").classList.remove("active");
         document.addEventListener('wheel', handleWheel,{passive : false});
         sub_container_zoom = false;
     }
