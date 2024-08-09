@@ -37,7 +37,6 @@ body {
 .main {
     width: 100vw;
     height: 100vh;
-    overflow: scroll;
     position: absolute;
     overflow: hidden;
 }
@@ -248,4 +247,88 @@ body {
 
 .mainBtn.active,.mainBtn:hover{
     background-color: greenyellow;
+}
+
+.mobile_table_container {
+    display: none;
+}
+
+@media (max-width:1000px) {
+
+    .main_table_container {
+        display: none;
+    }
+
+    .mobile_table_container {
+        display: flex;
+        position: fixed;
+        z-index: 2000;
+        gap: 5px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        top: 5px;
+        left: 5px;
+    }
+    
+    .mobile_box {
+        width: 25px;
+        height: 25px;
+        border: 1px solid green;
+        border-radius: 2px ;
+    }
+
+    .mobile_box:hover {
+        background-color: greenyellow;
+    }
+
+    #mobile_pointer {
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        background-image: url("Images/pointer.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        transition: 1s ease;
+        top: 5px;
+        left: 5px;
+        animation: slide 3s ease both;
+        animation-timeline: scroll(y);
+    }
+
+    body {
+        overflow: auto;
+    }
+
+    .main {
+        width: fit-content;
+        height: fit-content;
+        position: static;
+        overflow: hidden;
+    }
+    
+    .sub {
+        display: flex;
+        flex-wrap: wrap;
+        width: fit-content;
+        height: fit-content;
+        position: static;
+        flex-direction: column;
+    }
+    
+    .inner {
+        width: 90vw;
+        height: 100vh;
+        position: static;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 100px;
+    }
+    
+}
+
+@keyframes slide {
+    to {
+        top: calc(100% - 20px);
+    }
 }

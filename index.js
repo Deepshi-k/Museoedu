@@ -1,10 +1,12 @@
 
 document.addEventListener('DOMContentLoaded', () => {
+    let inner_width = window.innerWidth;
+    if(inner_width > 1000) {
     document.querySelectorAll(".inner")[0].scrollIntoView({behavior : 'smooth' , block : 'center' ,inline :'center'});
     setTimeout(()=>{
         document.querySelector(".sub").classList.add("zoomin");
         document.addEventListener('wheel', handleWheel,{passive : false});
-    },2000);
+    },2000); }
 });
 const inner = document.querySelectorAll('.inner');
 let currentIndex = 0;
@@ -29,7 +31,6 @@ function scrollToSlide(index){
         inner[index].scrollIntoView({ behavior: 'smooth' });
         pointer.classList = pointer_postion_names[index];
         currentIndex=index;
-        console.log(".............");
     }
 };
 
@@ -58,8 +59,6 @@ const handleWheel = (event) => {
                 deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
             }
             if(deltacount==nextscrolldeltavalue) {
-                // nextscrolldeltavalue+=100;
-                // previousdelatavalue+=100;
                 deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
                 isScrollingAllowed = true;
             }
@@ -71,8 +70,6 @@ const handleWheel = (event) => {
                 deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
             }
             if(deltacount==previousdelatavalue) {
-                // nextscrolldeltavalue-=100;
-                // previousdelatavalue-=100;
                 deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
                 isScrollingAllowed = true;
             }
@@ -85,10 +82,6 @@ const handleWheel = (event) => {
     }
     scrollTimeout = setTimeout(() => {
         isScrollingAllowed = true;
-        // let currentvalue=currentIndex;
-        // nextscrolldeltavalue = ((currentvalue+1)*100)+300; 
-        // previousdelatavalue = currentvalue*100;
-        // deltacount = (nextscrolldeltavalue + previousdelatavalue ) / 2;
         deltacount = (nextscrolldeltavalue + previousdelatavalue )/2;
     }, 250);
 };
